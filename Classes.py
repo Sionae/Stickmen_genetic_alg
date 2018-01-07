@@ -2,6 +2,8 @@ import random
 import pygame
 from pygame.locals import *
 
+pygame.init()
+
 class DNA:
     """DNA class in which the genetic information of each object is stored"""
 
@@ -67,5 +69,14 @@ class DNA:
         return str(self.sequence)
 
 
-    def draw(self):
-        
+    def draw(self, window, pos):
+
+
+        font = pygame.font.SysFont("Arial", 14)
+        text = font.render("Sword length:" + str(self.sword_length) + "\n"
+                        + "Speed:" + str(self.speed) + "\n"
+                        + "Evade:" + str(self.evade) + "\n"
+                        + "Strength:" + str(self.strength) + "\n"
+                        + "Health:" + str(self.health), 1, (255, 255, 255))
+
+        window.blit(text, pos)
