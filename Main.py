@@ -1,5 +1,6 @@
 from Functions import *
 
+
 population = StartPopulation(100)
 mutationRate = 0.05
 
@@ -13,3 +14,4 @@ for x in range(0, 100):
 best_end_pop = findBest(population)
 
 print(random_starting_pop, best_end_pop)
+
