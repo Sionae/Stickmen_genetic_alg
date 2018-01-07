@@ -1,6 +1,5 @@
-from Classes import *
 from time import time
-
+from Classes import *
 
 def StartPopulation(total):
     population = []
