@@ -69,7 +69,35 @@ class DNA:
         return str(self.sequence)
 
 
-    def draw(self, window, pos):
+    def draw(self, window, pos, colour):
+
+        w, h = pygame.display.get_surface().get_size()
+
+
+        left_leg_pos = [pos[0] - w//10, pos[1] + h//10]
+        right_leg_pos = [pos[0] + w//10, pos[1] + h//10]
+
+        legs = pygame.draw.lines(window, colour, False,
+                            [left_leg_pos, pos, right_leg_pos],
+                            3)
+
+        body = pygame.draw.rect(window, colour,
+                            [pos[0] - self.health // 1000, pos[1],
+                            pos[0] + self.health // 1000, pos[1] - h//5])
+
+        left_arm = pygame.draw.line(window colour,
+                            [pos[0] - self.health//1000, pos[1] - h//5],
+                            [pos[0] - self.health//1000 - w//5, pos[1] - h//10],
+                            3)
+
+        right_arm = pygame.draw.line(window colour,
+                            [pos[0] + self.health//1000, pos[1] - h//5],
+                            [pos[0] + self.health//1000 + w//5, pos[1] - h//10],
+                            3)
+
+        head = pygame.draw.circle(window, colour, [pos[0], h//5],
+                            7)
+
 
 
         font = pygame.font.SysFont("Arial", 14)
@@ -79,4 +107,4 @@ class DNA:
                         + "Strength:" + str(self.strength) + "\n"
                         + "Health:" + str(self.health), 1, (255, 255, 255))
 
-        window.blit(text, pos)
+        window.blit(text, (pos[0] + w//5, pos[1] + h//5))
